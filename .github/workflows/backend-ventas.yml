@@ -1,0 +1,30 @@
+name: Backend Ventas CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build backend ventas image
+        run: |
+          docker build -t sleguerduoc/backend-ventas ./back-Ventas_SpringBoot/Springboot-API-REST
+
+      - name: Push backend ventas image
+        run: |
+          docker push sleguerduoc/backend-ventas
