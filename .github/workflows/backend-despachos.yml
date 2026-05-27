@@ -23,7 +23,7 @@ jobs:
 
       - name: Build backend despachos image
         run: |
-          docker build -t sleguerduoc/backend-despachos ./back-Despachos_SpringBoot/Springboot-API-REST
+          docker build -t sleguerduoc/backend-despachos ./back-Despachos_SpringBoot/Springboot-API-REST-DESPACHO
 
       - name: Push backend despachos image
         run: |
